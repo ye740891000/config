@@ -1,0 +1,36 @@
+server:
+  port: 2005
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/cloud?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://192.168.1.102:3306/cloud?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://140.143.189.51:3306/body_temperature_cloud?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: Qwerasdfzxcv123$%^
+  redis:
+    database: 5
+    host: 192.168.1.113
+    port: 6379
+    password: Password123
+security:
+  oauth2:
+    client:
+      client-id: meeting
+      client-secret: meeting
+      user-authorization-uri: http://auth-service/oauth/authorize
+      access-token-uri: http://auth-service/oauth/token
+      scope: server
+      ignore-urls:
+        - /v2/api-docs
+        - /login
+        - /test
+        - /getRoutes
+    resource:
+      loadBalanced: true
+      token-info-uri: http://auth-service/oauth/check_token
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+#  eureka:
+#    enabled: true
